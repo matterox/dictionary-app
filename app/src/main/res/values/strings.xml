@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Dictionary</string>
+    <string name="main_search_title">Search Word</string>
+    <string name="main_search_hint">Enter Word</string>
+
+    <string name="searched_word_transcription">[%s]</string>
+    <string name="similar_word_frequency">Frequency (%s):</string>
+    <string name="similar_words">Similar:</string>
+
+    <string name="error_network">Network Error</string>
+
+    <string name="part_of_speech_noun">Noun</string>
+    <string name="part_of_speech_verb">verb</string>
+    <string name="part_of_speech_adjective">adjective</string>
+    <string name="part_of_speech_adverb">adverb</string>
+    <string name="part_of_speech_preposition">preposition</string>
+    <string name="part_of_speech_pronoun">pronoun</string>
+    <string name="part_of_speech_cardinal_number">cardinal number</string>
+    <string name="part_of_speech_conjunction">conjunction</string>
+    <string name="part_of_speech_interjection">interjection</string>
+    <string name="part_of_speech_article">article</string>
+    <string name="part_of_speech_abbreviation">abbreviation</string>
+    <string name="part_of_speech_particle">particle</string>
+    <string name="part_of_speech_ordinal_number">ordinal number</string>
+    <string name="part_of_speech_ordinal_modal_verb">ordinal number</string>
+    <string name="part_of_speech_ordinal_phrase">phrase</string>
+    <string name="part_of_speech_ordinal_idiom">idiom</string>
+
+</resources>
