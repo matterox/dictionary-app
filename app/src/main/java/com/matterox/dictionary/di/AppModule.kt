@@ -1,5 +1,6 @@
 package com.matterox.dictionary.di
 
+import com.matterox.dictionary.BuildConfig
 import com.matterox.dictionary.data.network.MoshiPartOfSpeechAdapter
 import com.matterox.dictionary.data.network.RequestHandler
 import com.matterox.dictionary.data.network.common.ApiEndpoints
@@ -14,7 +15,6 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import com.squareup.moshi.JsonAdapter
 
 internal const val NAME = "App"
 
@@ -23,7 +23,10 @@ val appModule = Kodein.Module("${NAME}Module") {
 
     bind<HttpLoggingInterceptor>() with singleton {
         HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = if (BuildConfig.DEBUG)
+                HttpLoggingInterceptor.Level.BODY
+            else
+                HttpLoggingInterceptor.Level.NONE
         }
     }
 
