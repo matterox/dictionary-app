@@ -23,19 +23,11 @@
         android:paddingHorizontal="@dimen/margin_medium"
         android:paddingVertical="@dimen/margin_small">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
-
         <ImageView
             android:id="@+id/ivPreview"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            android:layout_height="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
@@ -45,41 +37,40 @@
             android:id="@+id/tvTranslation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="TextView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivPreview"
+            tools:text="Translation" />
 
         <TextView
             android:id="@+id/tvNote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvTranslation"
             app:layout_constraintStart_toStartOf="@+id/tvTranslation"
             app:layout_constraintTop_toBottomOf="@+id/tvPartOfSpeech"
-            tools:text="TextView" />
+            tools:text="Note" />
 
         <TextView
             android:id="@+id/tvTranscription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvTranslation"
             app:layout_constraintStart_toStartOf="@+id/tvTranslation"
             app:layout_constraintTop_toBottomOf="@+id/tvNote"
-            tools:text="TextView" />
+            tools:text="Transcription" />
 
         <TextView
             android:id="@+id/tvPartOfSpeech"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvTranslation"
             app:layout_constraintStart_toStartOf="@+id/tvTranslation"
             app:layout_constraintTop_toBottomOf="@+id/tvTranslation"
-            tools:text="TextView" />
+            tools:text="Noun" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -57,12 +57,17 @@ internal class MeaningsViewModel(
 
     override fun onReduceState(viewAction: Action): ViewState = when (viewAction) {
         is Action.InProgress -> state.copy(
-            inProgress = true
+            isError = false,
+            inProgress = true,
+            errorMessage = ""
         )
         is Action.Success -> state.copy(
-            inProgress = false
+            isError = false,
+            inProgress = false,
+            errorMessage = ""
         )
         is Action.Error -> state.copy(
+            inProgress = false,
             isError = true,
             errorMessage = viewAction.errorMessage
         )

@@ -23,31 +23,34 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWord"
-            tools:text="TextView" />
+            tools:text="Translation" />
 
         <TextView
             android:id="@+id/tvFrequency"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvTranslation"
             app:layout_constraintTop_toBottomOf="@+id/tvPartOfSpeech"
-            tools:text="TextView" />
+            tools:text="Frequency (30.0):" />
 
         <TextView
             android:id="@+id/tvPartOfSpeech"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvTranslation"
             app:layout_constraintTop_toBottomOf="@+id/tvTranslation"
-            tools:text="TextView" />
+            tools:text="Noun" />
 
         <TextView
             android:id="@+id/tvWord"
@@ -55,11 +58,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="TextView" />
+            tools:text="Word" />
 
         <ProgressBar
             android:id="@+id/pbFrequency"
@@ -67,10 +71,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:max="100"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvWord"
-            app:layout_constraintTop_toBottomOf="@+id/tvFrequency" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFrequency"
+            tools:progress="30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

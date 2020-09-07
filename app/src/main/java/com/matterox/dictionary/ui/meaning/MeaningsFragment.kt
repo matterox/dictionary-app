@@ -2,6 +2,7 @@ package com.matterox.dictionary.ui.meaning
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import com.matterox.dictionary.R
 import com.matterox.dictionary.extentions.observe
 import com.matterox.dictionary.ui.base.BaseFragment
@@ -18,7 +19,6 @@ import kotlinx.android.synthetic.main.fragment_meanings.toolbar
 class MeaningsFragment: BaseFragment(R.layout.fragment_meanings) {
 
     private val viewModel by instance<MeaningsViewModel>()
-
     private val adapter by instance<SimilarMeaningAdapter>()
 
     private val stateObserver = Observer<MeaningsViewModel.ViewState> {
@@ -36,6 +36,10 @@ class MeaningsFragment: BaseFragment(R.layout.fragment_meanings) {
             }
         }
 
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         observe(viewModel.meaningLiveData, Observer { result ->
             toolbar.title = result.word
             toolbar.subtitle = getString(R.string.searched_word_transcription, result.transcription)
@@ -47,6 +51,7 @@ class MeaningsFragment: BaseFragment(R.layout.fragment_meanings) {
             tvTranscription.text =
                 getString(R.string.searched_word_transcription, result.transcription)
             adapter.items = result.similarMeaningTranslation
+            tvSimilar.isVisible = result.similarMeaningTranslation.isNotEmpty()
         })
 
         adapter.onDebouncedClickListener = {

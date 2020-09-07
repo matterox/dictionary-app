@@ -17,7 +17,7 @@ import com.matterox.dictionary.ui.search.adapter.SearchedWordAdapter
 import kotlinx.android.synthetic.main.fragment_search.*
 import org.kodein.di.generic.instance
 
-class SearchFragment: BaseFragment(R.layout.fragment_search) {
+class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private val viewModel by instance<SearchViewModel>()
     private val adapter by instance<SearchedWordAdapter>()
 
