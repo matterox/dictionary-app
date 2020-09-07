@@ -2,16 +2,13 @@ package com.matterox.dictionary.ui.search
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matterox.dictionary.R
-import com.matterox.dictionary.extentions.hideKeyboard
-import com.matterox.dictionary.extentions.observe
-import com.matterox.dictionary.extentions.showErrorSnackBar
-import com.matterox.dictionary.extentions.throttleLatest
+import com.matterox.dictionary.extentions.*
 import com.matterox.dictionary.ui.base.BaseFragment
 import com.matterox.dictionary.ui.search.adapter.SearchedWordAdapter
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -34,8 +31,10 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
         val onSearchChanged: (String) -> Unit =
             throttleLatest(scope = viewModel.viewModelScope) { viewModel.searchInput(it) }
-        tiWordSearch.doOnTextChanged { text, _, _, _ ->
-            onSearchChanged(text.toString())
+
+        val searchView = toolbar.menu.findItem(R.id.menu_search_bar).actionView as SearchView
+        searchView.onQueryTextChange{
+            if (it.isNotBlank()) onSearchChanged(it)
         }
 
         observe(viewModel.searchedWordLiveData, Observer { result ->
@@ -43,7 +42,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         })
 
         adapter.onDebouncedClickListener = {
-            tiWordSearch.hideKeyboard()
+            searchView.hideKeyboard()
             viewModel.onMeaningClicked(it)
         }
         rvWords.layoutManager = LinearLayoutManager(context)

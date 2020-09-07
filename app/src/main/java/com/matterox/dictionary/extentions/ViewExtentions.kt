@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.SearchView
 import com.google.android.material.snackbar.Snackbar
 import com.matterox.dictionary.R
 
@@ -70,4 +71,19 @@ fun View.hideKeyboard(activity: Activity? = null) {
     )
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun SearchView.onQueryTextChange(action: (String) -> Unit) {
+    this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+        override fun onQueryTextChange(newText: String): Boolean {
+            action(newText)
+            return true
+        }
+
+        override fun onQueryTextSubmit(query: String): Boolean {
+            return false
+        }
+
+    })
 }
